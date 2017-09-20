@@ -3,6 +3,7 @@
  */
 
 package org.firstinspires.ftc.teamcode.carnival1718;
+import com.qualcomm.hardware.motors.NeveRest20Gearmotor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 

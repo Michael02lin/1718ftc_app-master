@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 @TeleOp (name="CarnivalTeleop", group="Carnival")
-@Disabled
+//@Disabled
 public class carnivalOp extends OpMode {
     /* Declare OpMode members. */
     private carnivalHardware robot = new carnivalHardware();
@@ -28,27 +28,45 @@ public class carnivalOp extends OpMode {
          * Code to run REPEATEDLY after the driver hits INIT, but before they hit PLAY
          */
     @Override
-    public void init_loop() {
+    public void start() {
     }
 
     /*
      * Code to run ONCE when the driver hits PLAY
      */
     @Override
-    public void start() {
-
+    public void loop() {
         runtime.reset();
+        telemetry.addData("Status", "Running: " + runtime.toString());
+        telemetry.update();
+        //Gamepad 1
+        if (gamepad1.dpad_left) {
+            robot.railMotor.setPower(1);
+        } else if (gamepad1.dpad_right) {
+            robot.railMotor.setPower(-1);
+        } else {
+            robot.railMotor.setPower(0);
+        }
 
+        if (gamepad1.x) {
+            robot.flickerMotor.setPower(1);
+        } else if (gamepad2.x) {
+            robot.flickerMotor.setPower(-1);
+        } else {
+            robot.flickerMotor.setPower(0);
+        }
     }
 
     /*
      * Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP
      */
     @Override
-    public void loop() {
+    public void stop() {
         telemetry.addData("Status", "Running: " + runtime.toString());
         telemetry.update();
 
+        robot.railMotor.setPower(0);
+        robot.flickerMotor.setPower(0);
 
     }
 }
