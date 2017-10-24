@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.cardboard;
+package org.firstinspires.ftc.teamcode.repeaters;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
  * Created by MichaelL on 9/25/17.
  */
 
-public class cardboardHardware {
+public class mecanumHardware {
     DcMotor frontleftMotor;
     DcMotor frontrightMotor;
     DcMotor backleftMotor;

@@ -28,14 +28,20 @@ public class cardboardOp extends OpMode{
         telemetry.addData("Status", "Running: " + runtime.toString());
         telemetry.update();
 
-        robot.leftMotor.setPower(gamepad1.left_stick_y);
-        robot.rightMotor.setPower(gamepad1.right_stick_y);
+        robot.frontleftMotor.setPower(gamepad1.left_stick_y);
+        robot.frontrightMotor.setPower(gamepad1.right_stick_y);
+
+        robot.backleftMotor.setPower(gamepad1.left_stick_y);
+        robot.backrightMotor.setPower(gamepad1.right_stick_y);
+
     }
 
     @Override
     public void stop() {
-            robot.leftMotor.setPower(0);
-            robot.rightMotor.setPower(0);
+            robot.frontleftMotor.setPower(0);
+            robot.frontrightMotor.setPower(0);
+            robot.backleftMotor.setPower(0);
+            robot.backrightMotor.setPower(0);
 
     }
 }
