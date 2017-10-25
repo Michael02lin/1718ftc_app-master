@@ -20,6 +20,7 @@ public class mecanumOp extends OpMode{
     public void init() {
         runtime.reset();
         robot.init(hardwareMap);
+        //robot.JewelServo.setPosition(0.5);
         telemetry.addData("Status", "Initialized");
     }
 
@@ -31,7 +32,7 @@ public class mecanumOp extends OpMode{
 //robot.leftMotor.setPower(gamepad1.left_stick_y);
   //      robot.rightMotor.setPower(gamepad1.right_stick_y);
         //if (gamepad1.left_stick_y) {
-
+        //robot.JewelServo.setPosition(0.1); //rest position unknown currently
          if (gamepad1.dpad_left) {               //strafe left
             robot.frontleftMotor.setPower(-1);
             robot.backleftMotor.setPower(1);
@@ -71,6 +72,14 @@ public class mecanumOp extends OpMode{
              robot.move((flipped ? gamepad1.right_stick_y : -gamepad1.left_stick_y), //should be tank drive
                      (flipped ? gamepad1.left_stick_y : -gamepad1.right_stick_y));
         }
+
+        /*/
+        if (gamepad1.a) {
+            robot.JewelServo.setPosition();
+        } else (gamepad1.b) {
+                robot.
+        }
+        /*/
 
 
     }

@@ -1,8 +1,10 @@
 package org.firstinspires.ftc.teamcode.repeaters;
 
+import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 /**
  * Created by MichaelL on 9/25/17.
@@ -15,6 +17,10 @@ public class mecanumHardware {
     DcMotor backrightMotor;
 
     DcMotor [] motors;
+
+    Servo JewelServo;
+    //ModernRoboticsI2cColorSensor JewelSensor;
+
     public void init(HardwareMap ahwMap) {
 
         // define and initialize driveMotors
@@ -22,7 +28,7 @@ public class mecanumHardware {
         frontrightMotor = ahwMap.dcMotor.get("frontrightMotor");
         backleftMotor = ahwMap.dcMotor.get("backleftMotor");
         backrightMotor = ahwMap.dcMotor.get("backrightMotor");
-
+        JewelServo = ahwMap.servo.get("JewelServo");
 
         //set motor power to 0
         frontleftMotor.setPower(0);
