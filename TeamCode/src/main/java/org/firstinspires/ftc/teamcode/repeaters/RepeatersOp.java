@@ -4,13 +4,14 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+
 /**
  * Created by MichaelL on 9/25/17.
  */
 
-@TeleOp(name="mecanumTeleOp", group="mecanum")
-public class mecanumOp extends OpMode{
-    private mecanumHardware robot = new mecanumHardware();
+@TeleOp(name="RepeatersTeleOp", group="Repeaters")
+public class RepeatersOp extends OpMode{
+    private RepeatersHardware robot = new RepeatersHardware();
     private ElapsedTime runtime = new ElapsedTime();
     private boolean flipped = false;
 
@@ -28,10 +29,10 @@ public class mecanumOp extends OpMode{
         telemetry.addData("Status", "Running: " + runtime.toString());
         telemetry.update();
 //robot.leftMotor.setPower(gamepad1.left_stick_y);
-  //      robot.rightMotor.setPower(gamepad1.right_stick_y);
+        //      robot.rightMotor.setPower(gamepad1.right_stick_y);
         //if (gamepad1.left_stick_y) {
         //robot.JewelServo.setPosition(0.1); //rest position unknown currently
-         if (gamepad1.dpad_left) {               //strafe left
+        if (gamepad1.dpad_left) {               //strafe left
             robot.frontleftMotor.setPower(-1);
             robot.backleftMotor.setPower(1);
             robot.frontrightMotor.setPower(1);
@@ -67,8 +68,8 @@ public class mecanumOp extends OpMode{
             robot.backleftMotor.setPower(0);
             robot.frontrightMotor.setPower(0);
             robot.backrightMotor.setPower(0);/*/
-             robot.move((flipped ? -gamepad1.right_stick_y : gamepad1.left_stick_y), //should be tank drive
-                     (flipped ? gamepad1.left_stick_y : -gamepad1.right_stick_y));
+            robot.move((flipped ? -gamepad1.right_stick_y : gamepad1.left_stick_y), //should be tank drive
+                    (flipped ? gamepad1.left_stick_y : -gamepad1.right_stick_y));
         }
 
         /*/

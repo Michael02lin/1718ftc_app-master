@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
  * Created by MichaelL on 9/25/17.
  */
 
-public class mecanumHardware {
+public class RepeatersHardware {
     DcMotor frontleftMotor;
     DcMotor frontrightMotor;
     DcMotor backleftMotor;
