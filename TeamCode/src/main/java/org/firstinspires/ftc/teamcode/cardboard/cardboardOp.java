@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.cardboard;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -11,6 +12,7 @@ import org.firstinspires.ftc.teamcode.blackhole16hour.BlackHoleHardware;
  */
 
 @TeleOp(name="cardboardTeleOp", group="cardboard")
+@Disabled
 public class cardboardOp extends OpMode{
     private cardboardHardware robot = new cardboardHardware();
     private ElapsedTime runtime = new ElapsedTime();

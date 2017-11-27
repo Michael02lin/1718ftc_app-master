@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 @TeleOp (name="CarnivalTeleop", group="Carnival")
-//@Disabled
+@Disabled
 public class carnivalOp extends OpMode {
     /* Declare OpMode members. */
     private carnivalHardware robot = new carnivalHardware();

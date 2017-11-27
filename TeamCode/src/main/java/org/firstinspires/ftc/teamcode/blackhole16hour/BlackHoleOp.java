@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.blackhole16hour;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -11,6 +12,7 @@ import org.firstinspires.ftc.teamcode.minichallenge.botpuffHardware;
  */
 
 @TeleOp(name="BlackHoleTeleop", group="blackhole16hour")
+@Disabled
 public class BlackHoleOp extends OpMode {
     private BlackHoleHardware robot = new BlackHoleHardware();
     private ElapsedTime runtime = new ElapsedTime();

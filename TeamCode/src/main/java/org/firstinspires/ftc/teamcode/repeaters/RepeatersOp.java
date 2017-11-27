@@ -19,8 +19,15 @@ public class RepeatersOp extends OpMode{
     public void init() {
         runtime.reset();
         robot.init(hardwareMap);
-        //robot.JewelServo.setPosition(0.5);
+
         telemetry.addData("Status", "Initialized");
+    }
+    @Override
+    public void start() {
+        runtime.reset();
+        telemetry.addData("Status", "Start");
+        robot.JewelServo.setPosition(0.5); //this value should be the default holding position, double check to return to default position after auto ends, where it should automatically retract
+
     }
 
     @Override
@@ -33,35 +40,35 @@ public class RepeatersOp extends OpMode{
         //if (gamepad1.left_stick_y) {
         //robot.JewelServo.setPosition(0.1); //rest position unknown currently
         if (gamepad1.dpad_left) {               //strafe left
-            robot.frontleftMotor.setPower(-1);
-            robot.backleftMotor.setPower(1);
-            robot.frontrightMotor.setPower(1);
-            robot.backrightMotor.setPower(-1);
+            robot.FrontLeftMotor.setPower(-1);
+            robot.BackLeftMotor.setPower(1);
+            robot.FrontRightMotor.setPower(1);
+            robot.BackRightMotor.setPower(-1);
         } else if (gamepad1.dpad_right) {       //strafe right
-            robot.frontleftMotor.setPower(1);
-            robot.backleftMotor.setPower(-1);
-            robot.frontrightMotor.setPower(-1);
-            robot.backrightMotor.setPower(1);
+            robot.FrontLeftMotor.setPower(1);
+            robot.BackLeftMotor.setPower(-1);
+            robot.FrontRightMotor.setPower(-1);
+            robot.BackRightMotor.setPower(1);
         } else if (gamepad1.dpad_up) {          //full forwards
-            robot.frontleftMotor.setPower(1);
-            robot.backleftMotor.setPower(1);
-            robot.frontrightMotor.setPower(1);
-            robot.backrightMotor.setPower(1);
+            robot.FrontLeftMotor.setPower(1);
+            robot.BackLeftMotor.setPower(1);
+            robot.FrontRightMotor.setPower(1);
+            robot.BackRightMotor.setPower(1);
         } else if (gamepad1.dpad_down) {        //full backwards
-            robot.frontleftMotor.setPower(-1);
-            robot.backleftMotor.setPower(-1);
-            robot.frontrightMotor.setPower(-1);
-            robot.backrightMotor.setPower(-1);
+            robot.FrontLeftMotor.setPower(-1);
+            robot.BackLeftMotor.setPower(-1);
+            robot.FrontRightMotor.setPower(-1);
+            robot.BackRightMotor.setPower(-1);
         } else if (gamepad1.left_bumper) {      //left diagonal
-            robot.frontleftMotor.setPower(0);
-            robot.backrightMotor.setPower(0);
-            robot.backleftMotor.setPower(1);
-            robot.frontrightMotor.setPower(1);
+            robot.FrontLeftMotor.setPower(0);
+            robot.BackLeftMotor.setPower(1);
+            robot.FrontRightMotor.setPower(1);
+            robot.BackRightMotor.setPower(0);
         } else if (gamepad1.right_bumper) {     //right diagonal
-            robot.frontleftMotor.setPower(1);
-            robot.backrightMotor.setPower(1);
-            robot.backleftMotor.setPower(0);
-            robot.frontrightMotor.setPower(0);
+            robot.FrontLeftMotor.setPower(1);
+            robot.BackLeftMotor.setPower(0);
+            robot.FrontRightMotor.setPower(0);
+            robot.BackRightMotor.setPower(1);
         }
         else {
             /*/robot.frontleftMotor.setPower(0);
@@ -85,10 +92,10 @@ public class RepeatersOp extends OpMode{
 
     @Override
     public void stop() {
-        robot.frontleftMotor.setPower(0);
-        robot.frontrightMotor.setPower(0);
-        robot.backleftMotor.setPower(0);
-        robot.backrightMotor.setPower(0);
+        robot.FrontLeftMotor.setPower(0);
+        robot.FrontRightMotor.setPower(0);
+        robot.BackLeftMotor.setPower(0);
+        robot.BackRightMotor.setPower(0);
 
     }
 }

@@ -1,5 +1,6 @@
-package org.firstinspires.ftc.teamcode.Repeaters;
+package org.firstinspires.ftc.teamcode.RelicRecovery;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -9,6 +10,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 @TeleOp(name="mecanumTeleOp", group="mecanum")
+@Disabled
 public class mecanumOp extends OpMode{
     private mecanumHardware robot = new mecanumHardware();
     private ElapsedTime runtime = new ElapsedTime();

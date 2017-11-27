@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Repeaters;
+package org.firstinspires.ftc.teamcode.RelicRecovery;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
