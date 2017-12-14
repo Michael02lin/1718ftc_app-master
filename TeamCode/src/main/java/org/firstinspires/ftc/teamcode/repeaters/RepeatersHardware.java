@@ -11,50 +11,66 @@ import com.qualcomm.robotcore.hardware.Servo;
  */
 
 public class RepeatersHardware {
-    DcMotor FrontLeftMotor;
-    DcMotor FrontRightMotor;
-    DcMotor BackLeftMotor;
-    DcMotor BackRightMotor;
-
-    DcMotor [] AllMotors;
+    DcMotor CollectionRightMotor;
+    DcMotor CollectionLeftMotor;
+    DcMotor DriveRightMotor;
+    DcMotor DriveLeftMotor;
+    DcMotor RotateMotor;
+    DcMotor ElevatorMotor;
 
     Servo JewelServo;
+    Servo ElevatorRightServo;
+    Servo ElevatorLeftServo;
     ModernRoboticsI2cColorSensor ColorSensor;
+
+    DcMotorSimple[] AllMotors;
 
     public void init(HardwareMap ahwMap) {
 
         // define and initialize driveMotors
-        FrontLeftMotor = ahwMap.dcMotor.get("FrontLeftMotor");
-        FrontRightMotor = ahwMap.dcMotor.get("FrontRightMotor");
-        BackLeftMotor = ahwMap.dcMotor.get("BackLeftMotor");
-        BackRightMotor = ahwMap.dcMotor.get("BackRightMotor");
+        CollectionRightMotor = ahwMap.dcMotor.get("CollectionRightMotor");
+        CollectionLeftMotor = ahwMap.dcMotor.get("CollectionLeftMotor");
+        DriveRightMotor = ahwMap.dcMotor.get("DriveRightMotor");
+        DriveLeftMotor = ahwMap.dcMotor.get("DriveLeftMotor");
+        RotateMotor = ahwMap.dcMotor.get("RotateMotor");
+        ElevatorMotor = ahwMap.dcMotor.get("ElevatorMotor");
 
         JewelServo = ahwMap.servo.get("JewelServo");
+        ElevatorRightServo = ahwMap.servo.get("ElevatorRightServo");
+        ElevatorLeftServo = ahwMap.servo.get("ElevatorLeftServo");
 
         //set motor power to 0
-        FrontLeftMotor.setPower(0);
-        FrontRightMotor.setPower(0);
-        BackLeftMotor.setPower(0);
-        BackRightMotor.setPower(0);
+        for (DcMotorSimple motor: AllMotors) {
+            motor.setPower(0);
+        }
 
-        FrontLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        FrontRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        BackLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        BackRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        CollectionRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        CollectionLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        DriveRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        DriveLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        RotateMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        ElevatorMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        FrontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        DriveRightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+        DriveLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+
+        /*/FrontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         FrontRightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
         BackLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         BackRightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
-
+        /*/
 
     }
 
-    void move(double left, double right) {
+    void move (double left, double right) {
+        DriveRightMotor.setPower(right);
+        DriveLeftMotor.setPower(left);
+    }
+    /*/void move(double left, double right) {
         FrontLeftMotor.setPower(-left);
         FrontRightMotor.setPower(right);
         BackLeftMotor.setPower(-left);
         BackRightMotor.setPower(right);
-    }
+    }/*/
 }
 
