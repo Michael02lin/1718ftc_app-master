@@ -10,11 +10,11 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Created by MichaelL on 9/25/17.
  */
 
-@TeleOp(name="RepeatersTeleOp", group="Repeaters")
+@TeleOp(name="RepeatersOp", group="Repeaters")
 public class RepeatersOp extends OpMode{
     private RepeatersHardware robot = new RepeatersHardware();
     private ElapsedTime runtime = new ElapsedTime();
-    private boolean flipped = false;
+    //private boolean flipped = false;
 
     @Override
     public void init() {
@@ -27,39 +27,47 @@ public class RepeatersOp extends OpMode{
     public void start() {
         runtime.reset();
         telemetry.addData("Status", "Start");
-        robot.JewelServo.setPosition(0.5); //this value should be the default resting position (fits inside 18inches), double check to return to default position after auto ends, where it should automatically retract
-        robot.ElevatorRightServo.setPosition(0.5);
-        robot.ElevatorLeftServo.setPosition(0.5);
+        robot.JewelServo.setPosition(0.32); //this value should be the default resting position (fits inside 18inches), double check to return to default position after auto ends, where it should automatically retract
+        robot.ElevatorRightServo.setPosition(1);
+        robot.ElevatorLeftServo.setPosition(0);
     }
 
     @Override
     public void loop() {
-        runtime.reset();
+
         telemetry.addData("Status", "Running: " + runtime.toString());
-        telemetry.update();
+
 //robot.leftMotor.setPower(gamepad1.left_stick_y);
         //      robot.rightMotor.setPower(gamepad1.right_stick_y);
         //if (gamepad1.left_stick_y) {
         //robot.JewelServo.setPosition(0.1); //rest position unknown currently
 
+
         //gamepad1
+
             //glyph platform system
         if (gamepad1.a){
-            robot.ElevatorRightServo.setPosition(0.5); //"flipped position??
-            robot.ElevatorLeftServo.setPosition(0.5);
+            robot.ElevatorRightServo.setPosition(1); //"flipped position??
+            robot.ElevatorLeftServo.setPosition(0);
         } else {
-            robot.ElevatorRightServo.setPosition(0.5); //"default collection presosition??
-            robot.ElevatorLeftServo.setPosition(0.5);
+            robot.ElevatorRightServo.setPosition(0.35); //"default collection presosition??
+            robot.ElevatorLeftServo.setPosition(0.65);
         }
             //drive system
-        robot.DriveRightMotor.setPower(gamepad1.right_stick_y);
-        robot.DriveLeftMotor.setPower(gamepad1.left_stick_y);
+        double multiplier = 1; //allows for slower moving
+        if (gamepad1.right_bumper) {
+            multiplier = 0.5;
+        } else if (gamepad1.left_bumper) {
+            multiplier = 0.25;
+        }
+        robot.DriveRightMotor.setPower((-gamepad1.right_stick_y)*multiplier);
+        robot.DriveLeftMotor.setPower((-gamepad1.left_stick_y)*multiplier);
 
 
         //gamepad2
             //collection system
-        robot.CollectionRightMotor.setPower(gamepad2.right_stick_y);
-        robot.CollectionLeftMotor.setPower(-gamepad2.left_stick_y);
+        robot.CollectionRightMotor.setPower(-gamepad2.right_stick_y);
+        robot.CollectionLeftMotor.setPower(gamepad2.left_stick_y);
             //rotate system
         if (gamepad2.dpad_up) {
             robot.RotateMotor.setPower(1);
@@ -69,7 +77,14 @@ public class RepeatersOp extends OpMode{
             robot.RotateMotor.setPower(0);
         }
             //elevator system
-        robot.ElevatorMotor.setPower(1);
+        if(gamepad2.a) {
+            robot.ElevatorMotor.setPower(1);
+        } else if (gamepad2.b) {
+            robot.ElevatorMotor.setPower(-1);
+        } else {
+            robot.ElevatorMotor.setPower(0);
+        }
+
                 //test if this speed is suitable
                 //can we use encoders here to limit where it goes?, or use a touch sensor-limit sensor
 
@@ -126,15 +141,16 @@ public class RepeatersOp extends OpMode{
                 robot.
         }
         /*/
-
-
     }
 
     @Override
     public void stop() {
-        for (DcMotorSimple motor: robot.AllMotors) {
-            motor.setPower(0);
+        robot.CollectionRightMotor.setPower(0);
+        robot.CollectionLeftMotor.setPower(0);
+        robot.DriveRightMotor.setPower(0);
+        robot.DriveLeftMotor.setPower(0);
+        robot.RotateMotor.setPower(0);
+        robot.ElevatorMotor.setPower(0);
         }
 
     }
-}

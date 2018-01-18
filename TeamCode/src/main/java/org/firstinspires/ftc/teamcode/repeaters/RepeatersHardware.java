@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Created by MichaelL on 9/25/17.
  */
 
-public class RepeatersHardware {
+class RepeatersHardware {
     DcMotor CollectionRightMotor;
     DcMotor CollectionLeftMotor;
     DcMotor DriveRightMotor;
@@ -18,12 +18,13 @@ public class RepeatersHardware {
     DcMotor RotateMotor;
     DcMotor ElevatorMotor;
 
+    DcMotorSimple[] allMotors;
+
     Servo JewelServo;
     Servo ElevatorRightServo;
     Servo ElevatorLeftServo;
     ModernRoboticsI2cColorSensor ColorSensor;
 
-    DcMotorSimple[] AllMotors;
 
     public void init(HardwareMap ahwMap) {
 
@@ -40,9 +41,6 @@ public class RepeatersHardware {
         ElevatorLeftServo = ahwMap.servo.get("ElevatorLeftServo");
 
         //set motor power to 0
-        for (DcMotorSimple motor: AllMotors) {
-            motor.setPower(0);
-        }
 
         CollectionRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         CollectionLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -60,6 +58,11 @@ public class RepeatersHardware {
         BackRightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
         /*/
 
+        DriveRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        DriveLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        RotateMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        ElevatorMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
     }
 
     void move (double left, double right) {
@@ -72,5 +75,9 @@ public class RepeatersHardware {
         BackLeftMotor.setPower(-left);
         BackRightMotor.setPower(right);
     }/*/
+    public void jewelUp() {
+        JewelServo.setPosition(0.32);
+    }
+
 }
 
