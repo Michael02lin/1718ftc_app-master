@@ -23,6 +23,7 @@ class RepeatersHardware {
     Servo JewelServo;
     Servo ElevatorRightServo;
     Servo ElevatorLeftServo;
+    Servo CollectionServo;
     ModernRoboticsI2cColorSensor ColorSensor;
 
 
@@ -39,6 +40,7 @@ class RepeatersHardware {
         JewelServo = ahwMap.servo.get("JewelServo");
         ElevatorRightServo = ahwMap.servo.get("ElevatorRightServo");
         ElevatorLeftServo = ahwMap.servo.get("ElevatorLeftServo");
+        CollectionServo = ahwMap.servo.get("CollectionServo");
 
         //set motor power to 0
 

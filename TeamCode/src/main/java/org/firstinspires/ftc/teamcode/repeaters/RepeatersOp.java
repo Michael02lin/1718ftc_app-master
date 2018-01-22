@@ -30,6 +30,7 @@ public class RepeatersOp extends OpMode{
         robot.JewelServo.setPosition(0.32); //this value should be the default resting position (fits inside 18inches), double check to return to default position after auto ends, where it should automatically retract
         robot.ElevatorRightServo.setPosition(1);
         robot.ElevatorLeftServo.setPosition(0);
+        robot.CollectionServo.setPosition(1);
     }
 
     @Override
@@ -47,11 +48,11 @@ public class RepeatersOp extends OpMode{
 
             //glyph platform system
         if (gamepad1.a){
-            robot.ElevatorRightServo.setPosition(1); //"flipped position??
-            robot.ElevatorLeftServo.setPosition(0);
+            robot.ElevatorRightServo.setPosition(0); //"flipped position??
+            robot.ElevatorLeftServo.setPosition(0.93);
         } else {
-            robot.ElevatorRightServo.setPosition(0.35); //"default collection presosition??
-            robot.ElevatorLeftServo.setPosition(0.65);
+            robot.ElevatorRightServo.setPosition(0.55); //"default collection presosition??--0.2 good for 18inch position
+            robot.ElevatorLeftServo.setPosition(0.35); //-0.8--good for 18inch positio
         }
             //drive system
         double multiplier = 1; //allows for slower moving
@@ -68,6 +69,11 @@ public class RepeatersOp extends OpMode{
             //collection system
         robot.CollectionRightMotor.setPower(-gamepad2.right_stick_y);
         robot.CollectionLeftMotor.setPower(gamepad2.left_stick_y);
+        if (gamepad2.x) {
+            robot.CollectionServo.setPosition(0);
+        } else {
+            robot.CollectionServo.setPosition(0.55);
+        }
             //rotate system
         if (gamepad2.dpad_up) {
             robot.RotateMotor.setPower(1);
