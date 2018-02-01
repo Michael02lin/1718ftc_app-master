@@ -23,7 +23,7 @@ class RepeatersHardware {
     Servo JewelServo;
     Servo ElevatorRightServo;
     Servo ElevatorLeftServo;
-    Servo CollectionServo;
+    //Servo CollectionServo;
     ModernRoboticsI2cColorSensor ColorSensor;
 
 
@@ -40,12 +40,12 @@ class RepeatersHardware {
         JewelServo = ahwMap.servo.get("JewelServo");
         ElevatorRightServo = ahwMap.servo.get("ElevatorRightServo");
         ElevatorLeftServo = ahwMap.servo.get("ElevatorLeftServo");
-        CollectionServo = ahwMap.servo.get("CollectionServo");
+        //CollectionServo = ahwMap.servo.get("CollectionServo");
 
         //set motor power to 0
 
-        CollectionRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        CollectionLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        CollectionRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        CollectionLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         DriveRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         DriveLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         RotateMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);

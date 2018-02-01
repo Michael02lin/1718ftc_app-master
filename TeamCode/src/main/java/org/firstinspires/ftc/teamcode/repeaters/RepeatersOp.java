@@ -30,7 +30,7 @@ public class RepeatersOp extends OpMode{
         robot.JewelServo.setPosition(0.32); //this value should be the default resting position (fits inside 18inches), double check to return to default position after auto ends, where it should automatically retract
         robot.ElevatorRightServo.setPosition(1);
         robot.ElevatorLeftServo.setPosition(0);
-        robot.CollectionServo.setPosition(1);
+        //robot.CollectionServo.setPosition(1);
     }
 
     @Override
@@ -69,11 +69,11 @@ public class RepeatersOp extends OpMode{
             //collection system
         robot.CollectionRightMotor.setPower(-gamepad2.right_stick_y);
         robot.CollectionLeftMotor.setPower(gamepad2.left_stick_y);
-        if (gamepad2.x) {
+        /*/if (gamepad2.x) {
             robot.CollectionServo.setPosition(0);
         } else {
             robot.CollectionServo.setPosition(0.55);
-        }
+        }/*/
             //rotate system
         if (gamepad2.dpad_up) {
             robot.RotateMotor.setPower(1);
@@ -83,9 +83,9 @@ public class RepeatersOp extends OpMode{
             robot.RotateMotor.setPower(0);
         }
             //elevator system
-        if(gamepad2.a) {
+        if(gamepad2.right_bumper) {
             robot.ElevatorMotor.setPower(1);
-        } else if (gamepad2.b) {
+        } else if (gamepad2.left_bumper) {
             robot.ElevatorMotor.setPower(-1);
         } else {
             robot.ElevatorMotor.setPower(0);
