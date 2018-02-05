@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Repeaters;
 
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cColorSensor;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -18,13 +19,11 @@ class RepeatersHardware {
     DcMotor RotateMotor;
     DcMotor ElevatorMotor;
 
-    DcMotorSimple[] allMotors;
-
     Servo JewelServo;
     Servo ElevatorRightServo;
     Servo ElevatorLeftServo;
     //Servo CollectionServo;
-    ModernRoboticsI2cColorSensor ColorSensor;
+    com.qualcomm.robotcore.hardware.ColorSensor ColorSensor;
 
 
     public void init(HardwareMap ahwMap) {
@@ -40,6 +39,10 @@ class RepeatersHardware {
         JewelServo = ahwMap.servo.get("JewelServo");
         ElevatorRightServo = ahwMap.servo.get("ElevatorRightServo");
         ElevatorLeftServo = ahwMap.servo.get("ElevatorLeftServo");
+        ColorSensor = ahwMap.colorSensor.get("ColorSensor");
+
+
+
         //CollectionServo = ahwMap.servo.get("CollectionServo");
 
         //set motor power to 0
