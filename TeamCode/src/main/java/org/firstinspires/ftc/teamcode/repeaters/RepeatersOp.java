@@ -49,10 +49,10 @@ public class RepeatersOp extends OpMode{
             //glyph platform system
         if (gamepad1.a){
             robot.ElevatorRightServo.setPosition(0); //"flipped position??
-            robot.ElevatorLeftServo.setPosition(0.93);
+            robot.ElevatorLeftServo.setPosition(0.8);
         } else {
             robot.ElevatorRightServo.setPosition(0.55); //"default collection presosition??--0.2 good for 18inch position
-            robot.ElevatorLeftServo.setPosition(0.35); //-0.8--good for 18inch positio
+            robot.ElevatorLeftServo.setPosition(0.3); //-0.8--good for 18inch positio
         }
             //drive system
         double multiplier = 1; //allows for slower moving

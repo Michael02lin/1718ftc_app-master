@@ -23,7 +23,7 @@ class RepeatersHardware {
     Servo ElevatorRightServo;
     Servo ElevatorLeftServo;
     //Servo CollectionServo;
-    com.qualcomm.robotcore.hardware.ColorSensor ColorSensor;
+    com.qualcomm.robotcore.hardware.ColorSensor JewelColorSensor;
 
 
     public void init(HardwareMap ahwMap) {
@@ -39,7 +39,7 @@ class RepeatersHardware {
         JewelServo = ahwMap.servo.get("JewelServo");
         ElevatorRightServo = ahwMap.servo.get("ElevatorRightServo");
         ElevatorLeftServo = ahwMap.servo.get("ElevatorLeftServo");
-        ColorSensor = ahwMap.colorSensor.get("ColorSensor");
+        JewelColorSensor = ahwMap.colorSensor.get("ColorSensor");
 
 
 
