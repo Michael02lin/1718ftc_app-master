@@ -1,58 +1,49 @@
-package org.firstinspires.ftc.teamcode.Repeaters;
+package org.firstinspires.ftc.teamcode.G8TEST;
 
-import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cColorSensor;
-import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 /**
- * Created by MichaelL on 9/25/17.
+ * Created by MichaelL on 22/02/2018.
  */
 
-class RepeatersHardware {
-    DcMotor CollectionRightMotor;
-    DcMotor CollectionLeftMotor;
+class G8Hardware {
+
     DcMotor DriveRightMotor;
     DcMotor DriveLeftMotor;
-    DcMotor RotateMotor;
     DcMotor ElevatorMotor;
+    //DcMotor SlideAMotor;
+    //DcMotor SlideBMotor;
 
-    Servo JewelServo;
-    Servo ElevatorRightServo;
-    Servo ElevatorLeftServo;
-    //Servo CollectionServo;
-    com.qualcomm.robotcore.hardware.ColorSensor JewelColorSensor;
-
+    Servo GripRightServo;
+    Servo GripLeftServo;
+    //Servo ClawServo;
+    //Servo ClawServo;
 
     public void init(HardwareMap ahwMap) {
 
         // define and initialize driveMotors
-        CollectionRightMotor = ahwMap.dcMotor.get("CollectionRightMotor");
-        CollectionLeftMotor = ahwMap.dcMotor.get("CollectionLeftMotor");
         DriveRightMotor = ahwMap.dcMotor.get("DriveRightMotor");
         DriveLeftMotor = ahwMap.dcMotor.get("DriveLeftMotor");
-        RotateMotor = ahwMap.dcMotor.get("RotateMotor");
         ElevatorMotor = ahwMap.dcMotor.get("ElevatorMotor");
 
-        JewelServo = ahwMap.servo.get("JewelServo");
-        ElevatorRightServo = ahwMap.servo.get("ElevatorRightServo");
-        ElevatorLeftServo = ahwMap.servo.get("ElevatorLeftServo");
-        JewelColorSensor = ahwMap.colorSensor.get("ColorSensor");
+        //SlideAMotor = ahwMap.dcMotor.get("SlideAMotor");
+        //SlideBMotor = ahwMap.dcMotor.get("SlideBMotor");
 
+        GripRightServo = ahwMap.servo.get("GripRightServo");
+        GripLeftServo = ahwMap.servo.get("GripLeftServo");
+        //ClawServo = ahwMap.servo.get("ClawServo");
+        //ClawServo = ahwMap.servo.get("ClawServo");
 
 
         //CollectionServo = ahwMap.servo.get("CollectionServo");
 
         //set motor power to 0
 
-        CollectionRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        CollectionLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         DriveRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         DriveLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        RotateMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        ElevatorMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         DriveRightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
         DriveLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -65,7 +56,6 @@ class RepeatersHardware {
 
         DriveRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         DriveLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        RotateMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         ElevatorMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
     }
@@ -74,15 +64,6 @@ class RepeatersHardware {
         DriveRightMotor.setPower(right);
         DriveLeftMotor.setPower(left);
     }
-    /*/void move(double left, double right) {
-        FrontLeftMotor.setPower(-left);
-        FrontRightMotor.setPower(right);
-        BackLeftMotor.setPower(-left);
-        BackRightMotor.setPower(right);
-    }/*/
-    public void jewelUp() {
-        JewelServo.setPosition(0.32);
-    }
+
 
 }
-
